@@ -5,7 +5,7 @@ TARGET = instrument-cluster
 CLASSPATH = ../../classes
 MKDIR = mkdir -p
 COPY = cp -r
-CC = gcc
+#CC = gcc
 
 
 LOCAL_IFLAGS += -I. -I${CLASSPATH}
@@ -49,6 +49,12 @@ clean:
 debug: LOCAL_CFLAGS += -g -DDEBUG
 debug: LOCAL_LFLAGS += -g -DDEBUG
 debug: ${TARGET}
+
+
+install:
+	$(MKDIR) ${DESTDIR}/usr
+	$(MKDIR) ${DESTDIR}/usr/bin
+	$(COPY) ./${TARGET} ${DESTDIR}/usr/bin/
 
 
 all: ${TARGET}
